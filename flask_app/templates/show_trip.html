@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+    <title>View trip</title>
+</head>
+
+<body>
+    <div class="container w-50">
+        <div class="d-flex justify-content-end m-4">
+
+            <div>
+                <h2>Hello {{user.first_name}} Read about this trip!</h2>
+                <a href="/dashboard" class="text-center mx-auto">Dashboard</a>
+                <a href="/logout" class="text-center mx-auto">Logout</a>
+            </div>
+        </div>
+
+        <div class="container border border-dark">
+            <div class="d-flex justify-content-between">
+                <h3>{{trip.destination}}</h1>
+
+            </div>
+            <br>
+            <div class="row">
+                <p class="col-sm-2">Start Date: </p>
+                <p class="col-sm-8">{{trip.start_date}}</p>
+            </div>
+            <div class="row">
+                <p class="col-sm-2">End Date: </p>
+                <p class="col-sm-8">{{trip.end_date}}</p>
+            </div>
+            <div class="row">
+                <p class="col-sm-2">Created On: </p>
+                <p class="col-sm-8">{{trip.created_at}}</p>
+            </div>
+            <div class="row">
+                <p class="col-sm-2">Last Updated: </p>
+                <p class="col-sm-8">{{trip.updated_at}}</p>
+            </div>
+            <div class="row">
+                <p class="col-sm-2">Plan: </p>
+                <p class="col-sm-8">{{trip.plan}}</p>
+            </div>
+            <div class="row">
+                <p class="col-sm-2">Created By: </p>
+                <p class="col-sm-8">{{trip_user.first_name}} {{user.last_name}}</p>
+            </div>
+            <div>
+                {%if users_trip|length > 0%}
+                <h3>People who've joined the trip:</h3>
+                {%for user in users_trip%}
+                <p>{{user.first_name}}</p>
+                {%endfor%}
+                {%else%}
+                <h3>No one have joined the trip</h3>
+                {%endif%}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
